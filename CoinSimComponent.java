@@ -1,7 +1,3 @@
-/* NAME: Kevin Le
- * September 2016
- */
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,19 +9,10 @@ import javax.swing.JComponent;
  * 
  * Runs the coin toss simulation and draws the bar for each case
  */
-
 public class CoinSimComponent extends JComponent {
 
-	CoinTossSimulator CoinTossTest = new CoinTossSimulator(); //calls CoinTossSimulator class
+	CoinTossSimulator CoinTossTest = new CoinTossSimulator();
 
-	/*
-	 * Constructor CoinSimComponent
-	 * 
-	 * Initializes the number of input trials user wants to run
-	 * Rejects negative inputs until a positive input is entered
-	 * Runs simulation
-	 */
-	
 	public CoinSimComponent() {
 
 		Scanner in = new Scanner(System.in);
@@ -38,19 +25,8 @@ public class CoinSimComponent extends JComponent {
 			number = in.nextInt();
 		}
 		CoinTossTest.run(number);
-
 	}
 
-	/*
-	 * method paintComponent
-	 * 
-	 * Sets specifications for bar size, positioning, label, and fill color
-	 * Draws bars from simulation results
-	 * 	bar1 represents Two Heads result
-	 * 	bar2 represents Heads Tails result
-	 *  bar3 represents Two Tails result
-	 */
-	
 	public void paintComponent(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
@@ -67,8 +43,7 @@ public class CoinSimComponent extends JComponent {
 		int bar2Height = (int) (resizableBottom * bar2Fraction / 100 * 0.9);
 		int bar3Height = (int) (resizableBottom * bar3Fraction / 100 * 0.9);
 
-		// Bar(int bottom, int left, int width, int numUnits, double
-		// unitsPerPixel, Color color, String label)
+		// Bar (int bottom, int left, int width, int numUnits, double unitsPerPixel, Color color, String label)
 		Bar bar1 = new Bar(resizableBottom, resizableLeftSideBar / 4, resizableWidth, bar1Height, 100, Color.RED,
 				"Two Heads: " + CoinTossTest.getTwoHeads() + "(" + bar1Fraction + "%)");
 		Bar bar2 = new Bar(resizableBottom, resizableLeftSideBar / 2, resizableWidth, bar2Height, 100, Color.GREEN,
@@ -79,7 +54,5 @@ public class CoinSimComponent extends JComponent {
 		bar1.draw(g2);
 		bar2.draw(g2);
 		bar3.draw(g2);
-
 	}
-
 }
